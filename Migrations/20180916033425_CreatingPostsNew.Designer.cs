@@ -3,15 +3,17 @@ using System;
 using DotnetMultirotor.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace dotnetMultirotor.Migrations
 {
     [DbContext(typeof(DotnetMultirotorContext))]
-    partial class DotnetMultirotorContextModelSnapshot : ModelSnapshot
+    [Migration("20180916033425_CreatingPostsNew")]
+    partial class CreatingPostsNew
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

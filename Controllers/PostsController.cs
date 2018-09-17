@@ -14,11 +14,9 @@ namespace DotnetMultirotor.Controllers
 	public class PostsController : Controller
   {
 		private readonly DotnetMultirotorContext context;
-		private readonly IMapper mapper;
-	  public PostsController(DotnetMultirotorContext context, IMapper mapper)
+	  public PostsController(DotnetMultirotorContext context)
 		{
 		  this.context = context;
-			this.mapper = mapper;
 		}
 
 		[HttpGet]
@@ -28,10 +26,18 @@ namespace DotnetMultirotor.Controllers
 		}	
 
 		[HttpPost]
-		public IActionResult CreatePost([FromBody] Models.Post post)
+		public async Task<IActionResult> CreatePost([FromBody] Models.Post post)
 		{
+			context.Posts.Add(post);
+			await context.SaveChangesAsync();
 			return Ok(post);
 		}
+
+		[HttpGet("{id}")]
+		public async Task<Models.Post> GetPostById(int id)
+		{
+			return await context.Posts.FindAsync(id);
+		}	
 
 	}
 	

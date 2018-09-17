@@ -1,3 +1,4 @@
+import { PostService } from './services/post.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -10,6 +11,8 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { PostFormComponent } from './post-form/post-form.component';
+import { UserFormComponent } from './user-form/user-form.component';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,9 @@ import { PostFormComponent } from './post-form/post-form.component';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    PostFormComponent
+    PostFormComponent,
+    UserFormComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -31,7 +36,7 @@ import { PostFormComponent } from './post-form/post-form.component';
       { path: 'fetch-data', component: FetchDataComponent },
     ])
   ],
-  providers: [],
+  providers: [PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
